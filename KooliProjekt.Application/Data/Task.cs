@@ -11,8 +11,10 @@ namespace KooliProjekt.Application.Data
         [StringLength(100)]
         public string Title { get; set; }
 
+        [Required]
         public DateTime Start { get; set; }
 
+        [Range(0, double.MaxValue)]
         public decimal EstimatedHours { get; set; }
 
         [Required]
@@ -22,8 +24,10 @@ namespace KooliProjekt.Application.Data
         [StringLength(1000)]
         public string Description { get; set; }
 
+        [Required]
         public bool IsCompleted { get; set; }
 
+        [Range(0, double.MaxValue)] 
         public decimal FixedPrice { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace KooliProjekt.Application.Data
 
         public DateTime Date { get; set; }
 
+        [Range(0, double.MaxValue)]
         public decimal Hours { get; set; }
 
         [Required]

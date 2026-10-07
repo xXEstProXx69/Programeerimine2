@@ -15,8 +15,10 @@ namespace KooliProjekt.Application.Data
 
         public DateTime Deadline { get; set; }
 
+        [Range (0, double.MaxValue)]
         public decimal Budget { get; set; }
 
+        [Range(0, double.MaxValue)]
         public decimal HourlyRate { get; set; }
 
         [StringLength(500)]
