@@ -19,7 +19,7 @@ namespace KooliProjekt.Application.Data
 
         [Required]
         [StringLength(100)]
-        public string ResponsiblePerson { get; set; }
+        public string Worker { get; set; }
 
         [StringLength(1000)]
         public string Description { get; set; }
@@ -29,5 +29,7 @@ namespace KooliProjekt.Application.Data
 
         [Range(0, double.MaxValue)] 
         public decimal FixedPrice { get; set; }
+
+        public Projekt Projekt { get; set; }
     }
 }

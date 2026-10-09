@@ -13,6 +13,8 @@ namespace KooliProjekt.Application.Data
 
         public DateTime Start { get; set; }
 
+        public bool LoggedIn { get; set; }
+
         public DateTime Deadline { get; set; }
 
         [Range (0, double.MaxValue)]
@@ -23,5 +25,11 @@ namespace KooliProjekt.Application.Data
 
         [StringLength(500)]
         public string Team { get; set; }
+
+        public Customer Customer { get; set; }
+
+        public int CustomerId { get; set; }
     }
+
+ 
 }
