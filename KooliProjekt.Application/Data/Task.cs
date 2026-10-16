@@ -31,5 +31,7 @@ namespace KooliProjekt.Application.Data
         public decimal FixedPrice { get; set; }
 
         public Projekt Projekt { get; set; }
+
+        public int ProjektId { get; set; }
     }
 }
