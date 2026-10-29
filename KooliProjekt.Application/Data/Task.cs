@@ -32,6 +32,6 @@ namespace KooliProjekt.Application.Data
 
         public Projekt Projekt { get; set; }
 
-        public int ProjektId { get; set; }
+        public int? ProjektId { get; set; }
     }
 }

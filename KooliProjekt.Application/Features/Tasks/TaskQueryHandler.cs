@@ -11,15 +11,16 @@ namespace KooliProjekt.Application.Features.Tasks
     public class TaskQueryHandler : IRequestHandler<TaskQuery, TaskEntity>
     {
         private readonly ApplicationDbContext _dbContext;
+
         public TaskQueryHandler(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async global::System.Threading.Tasks.Task<TaskEntity> Handle(TaskQuery request, CancellationToken cancellationToken)
+        public async Task<TaskEntity> Handle(TaskQuery request, CancellationToken cancellationToken)
         {
             return await _dbContext.Tasks
-                .FirstOrDefaultAsync(task => task.Id == request.id, cancellationToken);
+                .FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
         }
     }
 }

@@ -1,13 +1,11 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using KooliProjekt.Application.Data;
+
+using TaskEntity = KooliProjekt.Application.Data.Task;
 
 namespace KooliProjekt.Application.Features.Tasks
 {
-    public class  TaskQuery : IRequest<Task>
+    public class TaskQuery : IRequest<TaskEntity>
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }
