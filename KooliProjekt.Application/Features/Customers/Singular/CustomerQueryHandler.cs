@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿
+using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
 using MediatR;
@@ -15,10 +16,14 @@ namespace KooliProjekt.Application.Features.Customers.Singular
             _dbContext = dbContext;
         }
 
-        public async Task<Customer> Handle(CustomerQuery request, CancellationToken cancellationToken)
+        public async Task<Customer> Handle(
+            CustomerQuery request,
+            CancellationToken cancellationToken)
         {
             return await _dbContext.Customers
-                .FirstOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
+                .FirstOrDefaultAsync(
+                    c => c.Id == request.Id,
+                    cancellationToken);
         }
     }
 }

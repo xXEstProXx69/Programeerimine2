@@ -1,4 +1,4 @@
-﻿using KooliProjekt.Application.Features.Projects.Worklog.Singular;
+﻿using KooliProjekt.Application.Features.Projects;
 using KooliProjekt.Application.Features.Worklog;
 using KooliProjekt.Application.Features.Worklog.All;
 using MediatR;

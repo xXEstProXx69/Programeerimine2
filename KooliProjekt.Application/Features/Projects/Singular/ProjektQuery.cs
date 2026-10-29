@@ -1,8 +1,7 @@
-﻿
-using KooliProjekt.Application.Data;
+﻿using KooliProjekt.Application.Data;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.Projects
+namespace KooliProjekt.Application.Features.Projects.Singular
 {
     public class ProjektQuery : IRequest<Projekt>
     {

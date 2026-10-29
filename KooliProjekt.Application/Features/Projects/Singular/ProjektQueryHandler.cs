@@ -1,14 +1,12 @@
-﻿
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.Projects
+namespace KooliProjekt.Application.Features.Projects.Singular
 {
-    public class ProjektQueryHandler
-        : IRequestHandler<ProjektQuery, Projekt>
+    public class ProjektQueryHandler : IRequestHandler<ProjektQuery, Projekt>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -23,9 +21,8 @@ namespace KooliProjekt.Application.Features.Projects
         {
             return await _dbContext.Projekts
                 .FirstOrDefaultAsync(
-                    project => project.Id == request.id,
+                    p => p.Id == request.id,
                     cancellationToken);
         }
     }
 }
-    

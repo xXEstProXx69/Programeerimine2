@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
-using KooliProjekt.Application.Features.Projects;
+﻿using KooliProjekt.Application.Features.Projects;
 using KooliProjekt.Application.Features.Projects.All;
+using KooliProjekt.Application.Features.Projects.Singular;
 using KooliProjekt.WebAPI.Controllers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace KooliProjekt.WebAPI.Controllers
 {
@@ -30,10 +31,11 @@ namespace KooliProjekt.WebAPI.Controllers
         {
             if (id <= 0)
             {
-                return NotFound();
+                return BadRequest("Invalid project ID.");
             }
 
-            var project = await _mediator.Send(new ProjektQuery { id = id });
+            var query = new ProjektQuery { id = id };
+            var project = await _mediator.Send(query);
 
             if (project == null)
             {

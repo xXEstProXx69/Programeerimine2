@@ -1,7 +1,7 @@
 ﻿using KooliProjekt.Application.Data;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.Projects.Worklog.Singular
+namespace KooliProjekt.Application.Features.Worklog
 {
     public class WorklogQuery : IRequest<WorkLog>
     {

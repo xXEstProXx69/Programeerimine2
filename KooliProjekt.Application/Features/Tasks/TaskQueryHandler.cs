@@ -1,14 +1,13 @@
-﻿using System.Threading;
+﻿
+using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-using TaskEntity = KooliProjekt.Application.Data.Task;
-
 namespace KooliProjekt.Application.Features.Tasks
 {
-    public class TaskQueryHandler : IRequestHandler<TaskQuery, TaskEntity>
+    public class TaskQueryHandler : IRequestHandler<TaskQuery, KooliProjekt.Application.Data.Task>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -17,10 +16,14 @@ namespace KooliProjekt.Application.Features.Tasks
             _dbContext = dbContext;
         }
 
-        public async Task<TaskEntity> Handle(TaskQuery request, CancellationToken cancellationToken)
+        public async Task<KooliProjekt.Application.Data.Task> Handle(
+            TaskQuery request,
+            CancellationToken cancellationToken)
         {
             return await _dbContext.Tasks
-                .FirstOrDefaultAsync(t => t.Id == request.Id, cancellationToken);
+                .FirstOrDefaultAsync(
+                    t => t.Id == request.Id,
+                    cancellationToken);
         }
     }
 }

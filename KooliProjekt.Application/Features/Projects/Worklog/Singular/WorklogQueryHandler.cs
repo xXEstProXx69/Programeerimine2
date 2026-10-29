@@ -1,10 +1,11 @@
-﻿using System.Threading;
+﻿
+using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.Projects.Worklog.Singular
+namespace KooliProjekt.Application.Features.Worklog
 {
     public class WorklogQueryHandler : IRequestHandler<WorklogQuery, WorkLog>
     {
@@ -15,10 +16,14 @@ namespace KooliProjekt.Application.Features.Projects.Worklog.Singular
             _dbContext = dbContext;
         }
 
-        public async Task<WorkLog> Handle(WorklogQuery request, CancellationToken cancellationToken)
+        public async Task<WorkLog> Handle(
+            WorklogQuery request,
+            CancellationToken cancellationToken)
         {
             return await _dbContext.WorkLogs
-                .FirstOrDefaultAsync(w => w.Id == request.Id, cancellationToken);
+                .FirstOrDefaultAsync(
+                    w => w.Id == request.Id,
+                    cancellationToken);
         }
     }
 }
