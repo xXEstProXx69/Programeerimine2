@@ -1,10 +1,11 @@
-﻿using KooliProjekt.Application.Data;
+﻿using KooliProjekt.Application.Dto;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
 namespace KooliProjekt.Application.Features.Projects.Singular
 {
-    public class ProjektQuery : IRequest<Projekt>
+    public class ProjektQuery : IRequest<OperationResult<ProjektDto>>
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

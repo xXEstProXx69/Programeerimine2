@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿
+using System.Threading.Tasks;
 using KooliProjekt.Application.Features.Tasks;
 using KooliProjekt.Application.Features.Tasks.All;
 using MediatR;
@@ -18,28 +19,18 @@ namespace KooliProjekt.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetTasks()
+        public async Task<IActionResult> GetTasks(
+            [FromQuery] ListTaskQuery query)
         {
-            var tasks = await _mediator.Send(new ListTaskQuery());
-            return Ok(tasks);
+            var result = await _mediator.Send(query);
+            return Result(result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTask(int id)
         {
-            if (id <= 0)
-            {
-                return NotFound();
-            }
-
-            var task = await _mediator.Send(new TaskQuery { Id = id });
-
-            if (task == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(task);
+            var result = await _mediator.Send(new TaskQuery { Id = id });
+            return Result(result);
         }
     }
 }

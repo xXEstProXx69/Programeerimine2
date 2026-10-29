@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿
+using System.Threading.Tasks;
 using KooliProjekt.Application.Features.Customers.All;
 using KooliProjekt.Application.Features.Customers.Singular;
 using MediatR;
@@ -18,28 +19,20 @@ namespace KooliProjekt.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCustomers()
+        public async Task<IActionResult> GetCustomers(
+            [FromQuery] ListCustomerQuery query)
         {
-            var customers = await _mediator.Send(new ListCustomerQuery());
-            return Ok(customers);
+            var result = await _mediator.Send(query);
+            return Result(result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomer(int id)
         {
-            if (id <= 0)
-            {
-                return NotFound();
-            }
+            var result = await _mediator.Send(
+                new CustomerQuery { Id = id });
 
-            var customer = await _mediator.Send(new CustomerQuery { Id = id });
-
-            if (customer == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(customer);
+            return Result(result);
         }
     }
 }

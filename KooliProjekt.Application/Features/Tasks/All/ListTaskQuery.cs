@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
-using KooliProjekt.Application.Data;
+﻿
+using KooliProjekt.Application.Dto;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
-
-using TaskEntity = KooliProjekt.Application.Data.Task;
 
 namespace KooliProjekt.Application.Features.Tasks.All
 {
-    public class ListTaskQuery : IRequest<IEnumerable<TaskEntity>>
+    public class ListTaskQuery : IRequest<OperationResult<PagedResult<TaskListDto>>>
     {
+        public int Page { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
     }
 }

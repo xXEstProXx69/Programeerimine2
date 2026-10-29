@@ -1,7 +1,6 @@
-﻿using KooliProjekt.Application.Features.Projects;
+﻿
 using KooliProjekt.Application.Features.Projects.All;
 using KooliProjekt.Application.Features.Projects.Singular;
-using KooliProjekt.WebAPI.Controllers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -20,29 +19,20 @@ namespace KooliProjekt.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetProjects()
+        public async Task<IActionResult> GetProjects(
+            [FromQuery] ListProjektQuery query)
         {
-            var projects = await _mediator.Send(new ListProjektQuery());
-            return Ok(projects);
+            var result = await _mediator.Send(query);
+            return Result(result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProject(int id)
         {
-            if (id <= 0)
-            {
-                return BadRequest("Invalid project ID.");
-            }
+            var query = new ProjektQuery { Id = id };
+            var result = await _mediator.Send(query);
 
-            var query = new ProjektQuery { id = id };
-            var project = await _mediator.Send(query);
-
-            if (project == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(project);
+            return Result(result);
         }
     }
 }

@@ -1,6 +1,5 @@
-﻿using KooliProjekt.Application.Features.Projects;
-using KooliProjekt.Application.Features.Worklog;
-using KooliProjekt.Application.Features.Worklog.All;
+﻿using KooliProjekt.Application.Features.Worklog.All;
+using KooliProjekt.Application.Features.Worklog.Singular;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -19,28 +18,18 @@ namespace KooliProjekt.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetWorkLogs()
+        public async Task<IActionResult> GetWorkLogs(
+            [FromQuery] ListWorklogQuery query)
         {
-            var workLogs = await _mediator.Send(new ListWorklogQuery());
-            return Ok(workLogs);
+            var result = await _mediator.Send(query);
+            return Result(result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetWorkLog(int id)
         {
-            if (id <= 0)
-            {
-                return NotFound();
-            }
-
-            var workLog = await _mediator.Send(new WorklogQuery { Id = id });
-
-            if (workLog == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(workLog);
+            var result = await _mediator.Send(new WorklogQuery { Id = id });
+            return Result(result);
         }
     }
 }

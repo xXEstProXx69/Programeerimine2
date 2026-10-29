@@ -1,13 +1,15 @@
-﻿
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
+using KooliProjekt.Application.Dto;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace KooliProjekt.Application.Features.Customers.Singular
 {
-    public class CustomerQueryHandler : IRequestHandler<CustomerQuery, Customer>
+    public class CustomerQueryHandler
+        : IRequestHandler<CustomerQuery, OperationResult<CustomerDto>>
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -16,14 +18,27 @@ namespace KooliProjekt.Application.Features.Customers.Singular
             _dbContext = dbContext;
         }
 
-        public async Task<Customer> Handle(
+        public async Task<OperationResult<CustomerDto>> Handle(
             CustomerQuery request,
             CancellationToken cancellationToken)
         {
-            return await _dbContext.Customers
-                .FirstOrDefaultAsync(
-                    c => c.Id == request.Id,
-                    cancellationToken);
+            var customer = await _dbContext.Customers
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
+
+            if (customer == null)
+            {
+                return new OperationResult<CustomerDto>()
+                    .AddError("Customer not found.");
+            }
+
+            var dto = new CustomerDto
+            {
+                Id = customer.Id,
+                CustomerName = customer.CustomerName
+            };
+
+            return new OperationResult<CustomerDto>(dto);
         }
     }
 }

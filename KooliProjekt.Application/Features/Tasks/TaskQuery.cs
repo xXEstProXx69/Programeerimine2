@@ -1,9 +1,11 @@
-﻿using KooliProjekt.Application.Data;
+﻿
+using KooliProjekt.Application.Dto;
+using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
 namespace KooliProjekt.Application.Features.Tasks
 {
-    public class TaskQuery : IRequest<KooliProjekt.Application.Data.Task>
+    public class TaskQuery : IRequest<OperationResult<TaskDto>>
     {
         public int Id { get; set; }
     }

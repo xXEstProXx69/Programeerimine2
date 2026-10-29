@@ -1,0 +1,13 @@
+﻿using KooliProjekt.Application.Dto;
+using KooliProjekt.Application.Infrastructure.Paging;
+using KooliProjekt.Application.Infrastructure.Results;
+using MediatR;
+
+namespace KooliProjekt.Application.Features.Worklog.All
+{
+    public class ListWorklogQuery : IRequest<OperationResult<PagedResult<WorkLogListDto>>>
+    {
+        public int Page { get; set; } = 1;
+        public int PageSize { get; set; } = 10;
+    }
+}
