@@ -30,6 +30,12 @@ namespace KooliProjekt.Application.Data
         [Range(0, double.MaxValue)] 
         public decimal FixedPrice { get; set; }
 
+        public Task()
+        {
+            Start = DateTime.Now;
+            IsCompleted = false;
+        }
+
         public Projekt Projekt { get; set; }
 
         public int? ProjektId { get; set; }

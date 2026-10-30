@@ -3,7 +3,7 @@ using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.Worklog.All
+namespace KooliProjekt.Application.Features.Worklog
 {
     public class ListWorklogQuery : IRequest<OperationResult<PagedResult<WorkLogListDto>>>
     {

@@ -8,7 +8,7 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.Worklog.All
+namespace KooliProjekt.Application.Features.Worklog
 {
     public class ListWorklogQueryHandler
         : IRequestHandler<ListWorklogQuery, OperationResult<PagedResult<WorkLogListDto>>>

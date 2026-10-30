@@ -3,12 +3,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using KooliProjekt.Application.Data;
 using KooliProjekt.Application.Dto;
+using KooliProjekt.Application.Features.Tasks;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.Projects.All
+namespace KooliProjekt.Application.Features.Projects
 {
     public class ListProjektQueryHandler
         : IRequestHandler<ListProjektQuery, OperationResult<PagedResult<ProjektListDto>>>

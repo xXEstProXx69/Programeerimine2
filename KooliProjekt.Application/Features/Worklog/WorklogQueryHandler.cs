@@ -6,7 +6,7 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.Worklog.Singular
+namespace KooliProjekt.Application.Features.Worklog
 {
     public class WorklogQueryHandler
         : IRequestHandler<WorklogQuery, OperationResult<WorkLogDto>>

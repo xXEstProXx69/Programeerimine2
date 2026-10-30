@@ -6,7 +6,7 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.Customers.Singular
+namespace KooliProjekt.Application.Features.Customers
 {
     public class CustomerQueryHandler
         : IRequestHandler<CustomerQuery, OperationResult<CustomerDto>>

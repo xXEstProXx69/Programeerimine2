@@ -3,7 +3,7 @@ using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.Projects.All
+namespace KooliProjekt.Application.Features.Tasks
 {
     public class ListProjektQuery : IRequest<OperationResult<PagedResult<ProjektListDto>>>
     {

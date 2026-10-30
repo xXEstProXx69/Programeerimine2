@@ -9,7 +9,7 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.Tasks.All
+namespace KooliProjekt.Application.Features.Tasks
 {
     public class ListTaskQueryHandler : IRequestHandler<ListTaskQuery, OperationResult<PagedResult<TaskListDto>>>
     {

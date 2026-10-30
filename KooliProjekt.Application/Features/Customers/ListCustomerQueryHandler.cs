@@ -9,7 +9,7 @@ using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace KooliProjekt.Application.Features.Customers.All
+namespace KooliProjekt.Application.Features.Customers
 {
     public class ListCustomerQueryHandler
         : IRequestHandler<ListCustomerQuery, OperationResult<PagedResult<CustomerListDto>>>

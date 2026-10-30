@@ -1,5 +1,4 @@
-﻿using KooliProjekt.Application.Features.Worklog.All;
-using KooliProjekt.Application.Features.Worklog.Singular;
+﻿using KooliProjekt.Application.Features.Worklog;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -29,6 +28,19 @@ namespace KooliProjekt.WebAPI.Controllers
         public async Task<IActionResult> GetWorkLog(int id)
         {
             var result = await _mediator.Send(new WorklogQuery { Id = id });
+            return Result(result);
+        }
+        [HttpPost("save")]
+        public async Task<IActionResult> SaveWorkLog(SaveLogCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Result(result);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteWorkLog(int id)
+        {
+            var result = await _mediator.Send(
+                new DeleteLogCommand { Id = id });
             return Result(result);
         }
     }

@@ -1,12 +1,11 @@
-﻿
-using KooliProjekt.Application.Dto;
+﻿using KooliProjekt.Application.Dto;
 using KooliProjekt.Application.Infrastructure.Paging;
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.Tasks.All
+namespace KooliProjekt.Application.Features.Customers
 {
-    public class ListTaskQuery : IRequest<OperationResult<PagedResult<TaskListDto>>>
+    public class ListCustomerQuery : IRequest<OperationResult<PagedResult<CustomerListDto>>>
     {
         public int Page { get; set; } = 1;
         public int PageSize { get; set; } = 10;

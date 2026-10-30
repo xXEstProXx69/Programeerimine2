@@ -2,9 +2,9 @@
 using KooliProjekt.Application.Infrastructure.Results;
 using MediatR;
 
-namespace KooliProjekt.Application.Features.Projects.Singular
+namespace KooliProjekt.Application.Features.Customers
 {
-    public class ProjektQuery : IRequest<OperationResult<ProjektDto>>
+    public class CustomerQuery : IRequest<OperationResult<CustomerDto>>
     {
         public int Id { get; set; }
     }
